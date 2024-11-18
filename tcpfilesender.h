@@ -30,9 +30,9 @@ private:
     QDialogButtonBox *buttonBox;
     QTcpSocket       tcpClient;
     QLineEdit        *URLinput;
-    QLineEdit        *postinput;
+    QLineEdit        *portinput;
     QLabel           *URLLabel;
-    QLabel           *postLabel;
+    QLabel           *portLabel;
 
     qint64           totalBytes;
     qint64           bytesWritten;

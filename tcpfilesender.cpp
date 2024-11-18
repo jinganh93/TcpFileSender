@@ -14,12 +14,12 @@ TcpFileSender::TcpFileSender(QWidget *parent)
     openButton = new QPushButton(QStringLiteral("開檔"));
 
     URLLabel = new QLabel(QStringLiteral("URL:"));
-    postLabel = new QLabel(QStringLiteral("POST:"));
+    portLabel = new QLabel(QStringLiteral("port:"));
     URLinput = new QLineEdit;
-    postinput  = new QLineEdit;
+    portinput  = new QLineEdit;
     //預設本地位置
     URLinput->setText("127.0.0.1");
-    postinput->setText("16998");
+    portinput->setText("16998");
 
     // 佈局設計
     QVBoxLayout *mainLayout = new QVBoxLayout;
@@ -28,8 +28,8 @@ TcpFileSender::TcpFileSender(QWidget *parent)
     ipLayout->addWidget(URLinput);
 
     QHBoxLayout *portLayout = new QHBoxLayout;
-    portLayout->addWidget(postLabel);
-    portLayout->addWidget(postinput);
+    portLayout->addWidget(portLabel);
+    portLayout->addWidget(portinput);
 
     buttonBox = new QDialogButtonBox;
     buttonBox->addButton(startButton, QDialogButtonBox::ActionRole);
@@ -64,11 +64,11 @@ void TcpFileSender::start()
 {
     QString ipAddress = URLinput->text();
     bool ok;
-    quint16 port = postinput->text().toUShort(&ok);
+    quint16 port = portinput->text().toUShort(&ok);
 
     if (ipAddress.isEmpty() || !ok) {
         QMessageBox::warning(this, QStringLiteral("錯誤"),
-                             QStringLiteral("請輸入有效的 IP 位址與 Port！"));//預設post16998
+                             QStringLiteral("請輸入有效的 IP 位址與 Port！"));//預設port16998
         return;
     }
 
